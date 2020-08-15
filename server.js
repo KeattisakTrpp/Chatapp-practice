@@ -3,8 +3,8 @@ var app =  express()
 var server = require('http').createServer(app)
 var io = require('socket.io')(server)
 var path = require('path')
-const formatMessage = require('./messages')
-const {userJoin, getUser, userLeave, getUserList} = require('./users')
+const formatMessage = require('./utils/messages')
+const {userJoin, getUser, userLeave, getUserList} = require('./utils/users')
 
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -30,9 +30,10 @@ io.on('connection', socket => {
     });
 
     // Listen to chat message
-    socket.on('chat message', msg => {
+    socket.on('chat message', ({msg, file}) => {
         const user = getUser(socket.id)
-        io.emit('message', formatMessage(user.username, msg))
+        if(file == null) io.emit('message', formatMessage(user.username, msg))
+        else io.emit('message', formatMessage(user.username, msg, file))
     });
 })
 

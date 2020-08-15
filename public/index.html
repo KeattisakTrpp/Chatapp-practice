@@ -11,7 +11,7 @@
   <div class="chat-container">
     <header class="chat-header">
       <h1><i class="fas fa-smile"></i> ChatApp</h1>
-      <a href="/" class="btn">Leave Room</a>
+      <button class="btn" id="leave" onclick="back()" >Leave Room</button>
     </header>
     <main class="chat-main">
       <div class="chat-sidebar">
@@ -30,10 +30,17 @@
           autocomplete="off"
         />
         <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+        <label for="file" class="btn"><i class="far fa-image fa-lg img"></i></label>
+        <input type="file" id="file" accept="image/*">
       </form>
     </div>
   </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    function back() { 
+        window.history.back()
+    } 
+  </script>
 </body>
 </html>

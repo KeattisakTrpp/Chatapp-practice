@@ -185,3 +185,17 @@ a {
 		display: none;
 	}
 }
+
+input[type="file"]{
+	display: none;
+}
+label {
+	margin-left: 15px;
+}
+i.img {
+	margin-top: 6.5px;
+}
+
+img {
+	max-height: 250px;
+}
